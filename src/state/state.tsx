@@ -1,31 +1,35 @@
-import React, { Dispatch, createContext, ReactNode, useReducer } from 'react';
-import { Actions, appReducer } from './reducer.js';
+import React, {
+	createContext,
+	type Dispatch,
+	type ReactNode,
+	useReducer,
+} from 'react';
 
-export interface StateInterface {
-  text: string;
-}
+import {type Actions, appReducer} from './reducer.js';
 
-const initialState: StateInterface = {
-  text: "",
+export type StateInterface = {
+	text: string;
 };
 
-interface StateProps {
-  children: ReactNode;
-}
+const initialState: StateInterface = {
+	text: '',
+};
+
+type StateProps = {
+	children: ReactNode;
+};
 
 export const StateContext = createContext<StateInterface>(initialState);
 export const DispatchContext = createContext<Dispatch<Actions>>(
-  () => undefined
+	() => undefined,
 );
 
-export const State = ({ children }: StateProps) => {
-  const [state, dispatch] = useReducer(appReducer, initialState);
+export const State = ({children}: StateProps) => {
+	const [state, dispatch] = useReducer(appReducer, initialState);
 
-  return (
-    <DispatchContext.Provider value={dispatch}>
-      <StateContext.Provider value={{ ...state }}>
-        {children}
-      </StateContext.Provider>
-    </DispatchContext.Provider>
-  );
+	return (
+		<DispatchContext.Provider value={dispatch}>
+			<StateContext.Provider value={state}>{children}</StateContext.Provider>
+		</DispatchContext.Provider>
+	);
 };
