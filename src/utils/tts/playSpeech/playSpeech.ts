@@ -11,6 +11,7 @@ import {logPlayerErr} from './logPlayerErr.js';
 
 const player = playSound({});
 
+// TODO: try to use assets first, then resort to cache
 export const playSpeech = async (
 	text: string,
 	log: Log,
