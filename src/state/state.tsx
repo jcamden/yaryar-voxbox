@@ -5,19 +5,30 @@ import React, {
 	useReducer,
 } from 'react';
 
-import {type Actions, appReducer} from './reducer.js';
+import {
+	type Actions,
+	appReducer,
+	ChildProcessPayload,
+	TimeoutPayload,
+} from './reducer.js';
 
-export type StateInterface = {
+export interface StateInterface {
+	childProcesses: ChildProcessPayload[];
+	logs: string[];
 	text: string;
-};
+	timeouts: TimeoutPayload[];
+}
 
 const initialState: StateInterface = {
+	childProcesses: [],
+	logs: [],
 	text: '',
+	timeouts: [],
 };
 
-type StateProps = {
+interface StateProps {
 	children: ReactNode;
-};
+}
 
 export const StateContext = createContext<StateInterface>(initialState);
 export const DispatchContext = createContext<Dispatch<Actions>>(

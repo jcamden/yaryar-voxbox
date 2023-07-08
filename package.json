@@ -9,6 +9,7 @@
 	},
 	"scripts": {
 		"build": "tsc",
+		"postbuild": "rsync -avu --exclude={'*.ts','*.yml','*.json','*.http','*.conf','*.sh'} \"./src/\" \"./dist\"",
 		"dev": "tsc --watch",
 		"test": "prettier --check . && xo && ava"
 	},
@@ -60,19 +61,26 @@
 		],
 		"prettier": true,
 		"rules": {
+			"@typescript-eslint/consistent-type-imports": "off",
+			"capitalized-comments": "off",
+			"import/order": "off",
+			"react/no-array-index-key": "off",
 			"react/prop-types": "off",
-			"unicorn/expiring-todo-comments": "off",
 			"simple-import-sort/exports": "warn",
 			"simple-import-sort/imports": "warn",
+			"unicorn/expiring-todo-comments": "off",
 			"unicorn/filename-case": "off",
+			"unicorn/prevent-abbreviations": "off",
+			"unicorn/prefer-logical-operator-over-ternary": "off",
 			"react/function-component-definition": [
-				2,
+				"error",
 				{
 					"namedComponents": "arrow-function",
 					"unnamedComponents": "arrow-function"
 				}
 			],
-			"unicorn/prevent-abbreviations": "off"
+			"@typescript-eslint/consistent-type-definitions": ["error", "interface"]
+
 		},
 		"overrides": [
 			{

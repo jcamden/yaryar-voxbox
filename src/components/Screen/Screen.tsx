@@ -17,9 +17,9 @@ export const Screen = ({children}: {children: React.ReactNode}) => {
 
 	return (
 		<Box
-			flexDirection="row"
+			flexDirection="column"
 			alignItems="center"
-			justifyContent="center"
+			justifyContent="space-between"
 			borderStyle="bold"
 			borderColor="greenBright"
 			height={height}
