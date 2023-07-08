@@ -9,6 +9,7 @@ import useScreenSize from '../../hooks/useScreenSize.js';
 import {useTextInput} from '../../hooks/useTextInput.js';
 import {DispatchContext, StateContext} from '../../state/state.js';
 import {keepAudioHot} from '../../utils/tts/keepAudioHot.js';
+import {CurrentText} from '../CurrentText/CurrentText.js';
 import {Screen} from '../Screen/Screen.js';
 
 export const Ui = () => {
@@ -66,7 +67,7 @@ export const Ui = () => {
 					</>
 				)}
 			</Box>
-			{text && <BigText text={text} font="block" colors={['white', 'candy']} />}
+			<CurrentText text={text} />
 			<Box
 				// borderColor="greenBright"
 				// borderStyle="classic"
